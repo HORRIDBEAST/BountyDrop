@@ -82,12 +82,20 @@ export default function BusinessDashboardPage() {
           <p className="text-[11px] font-medium uppercase tracking-wider text-white/40">Business dashboard</p>
           <h1 className="font-display text-2xl font-semibold text-white">Your quests</h1>
         </div>
-        <Link
-          href="/business/create"
-          className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-ink transition-transform duration-200 hover:-translate-y-0.5 hover:bg-accentSoft"
-        >
-          + Post a bounty
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/business/vault"
+            className="rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white transition-all duration-200 hover:-translate-y-0.5 hover:border-white/35"
+          >
+            Spend Vault
+          </Link>
+          <Link
+            href="/business/create"
+            className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-ink transition-transform duration-200 hover:-translate-y-0.5 hover:bg-accentSoft"
+          >
+            + Post a bounty
+          </Link>
+        </div>
       </div>
 
       {myTasks.length === 0 && (

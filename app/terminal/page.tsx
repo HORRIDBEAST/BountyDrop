@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { useAccount, useReadContract, useReadContracts, useWriteContract, useWaitForTransactionReceipt } from "wagmi";
 import { formatEther, parseEther } from "viem";
 import { useNetwork } from "../../lib/network";
@@ -151,8 +152,11 @@ export default function SpendTerminalPage() {
     return (
       <p className="text-white/60">
         No spend policies have been granted to this wallet yet. Ask the vault
-        owner to call <code className="text-white/80">grantPermission</code> for
-        this address.
+        owner to grant one from{" "}
+        <Link href="/business/vault" className="text-accentSoft hover:underline">
+          the Spend Vault management page
+        </Link>
+        .
       </p>
     );
   }

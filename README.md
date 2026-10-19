@@ -336,8 +336,25 @@ Once in range: **Check in** → submit (Track A: pick the matching option;
 Track B: upload a photo and wait for the AI verdict — no second MetaMask
 prompt on approval, the server's oracle wallet submits that one).
 
-### 6. Spend Terminal (owner side is CLI-only for now)
+### 6. Spend Terminal
 
+Connect the **vault owner wallet** (the one that deployed `SpendVault`) and
+go to `/business/vault`:
+
+1. **Top up** — deposit MON into the vault's own balance.
+2. **Grant a policy** — enter the terminal/agent wallet address, a budget
+   cap, a category, a comma-separated list of allowed merchant addresses,
+   an optional expiry and single-use flag, and optionally a geofence
+   (click the map to drop the merchant's pin — the meters-per-degree
+   conversion for the on-chain flat-earth distance check is computed for
+   you from that pin's latitude).
+3. Policies you've granted are listed below the form, each with a
+   **Revoke** button.
+
+Then connect the **terminal wallet** at `/terminal` — the granted policy
+appears in the dropdown, ready to redeem against an allowlisted merchant.
+
+Equivalent raw `cast` commands, if you'd rather skip the UI:
 ```bash
 cast send <SPEND_VAULT_ADDRESS> "topUp()" --value 0.1ether \
   --rpc-url monad_testnet --private-key $PRIVATE_KEY
@@ -347,8 +364,6 @@ cast send <SPEND_VAULT_ADDRESS> \
   <TERMINAL_WALLET_ADDRESS> 100000000000000000 "food" "[<MERCHANT_ADDRESS>]" 0 false false 0 0 0 0 \
   --rpc-url monad_testnet --private-key $PRIVATE_KEY
 ```
-Then connect the terminal wallet at `/terminal` — the policy appears in the
-dropdown.
 
 ### Troubleshooting
 
